@@ -43,4 +43,5 @@ captures/
 # My ignore
 *.classpath
 *.svn
+*.settings
 src/wormhole.properties
