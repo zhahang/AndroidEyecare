@@ -1,0 +1,54 @@
+package com.wormhole.eyecare.fragment;
+
+import com.wormhole.eyecare.R;
+
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainFragment extends Fragment implements OnClickListener{
+
+	private TextView beginBtn;
+	private TextView exitBtn;
+	
+	private ModelFragment modelFragment;
+	
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		View view = inflater.inflate(R.layout.fragment_main, container, false);
+		beginBtn = (TextView)view.findViewById(R.id.begin_btn);
+		exitBtn = (TextView) view.findViewById(R.id.exit_btn);
+		beginBtn.setOnClickListener(this);
+		exitBtn.setOnClickListener(this);
+		
+		return view;
+	}
+	
+	@Override
+	public void onClick(View v) {
+		FragmentManager fm = getFragmentManager();
+		FragmentTransaction transaction = fm.beginTransaction();
+		switch (v.getId()) {
+		case R.id.begin_btn:
+			if(modelFragment == null){
+				modelFragment = new ModelFragment();
+			}
+			transaction.replace(R.id.fragment_content, modelFragment);
+			transaction.commit();
+			break;
+		case R.id.exit_btn:
+			getActivity().finish();
+			break;
+		default:
+			break;
+		}
+	}
+}

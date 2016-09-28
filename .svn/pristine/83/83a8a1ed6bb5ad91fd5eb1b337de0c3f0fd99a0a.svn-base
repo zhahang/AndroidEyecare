@@ -1,0 +1,53 @@
+package com.wormhole.eyecare;
+
+import com.wormhole.eyecare.fragment.MainFragment;
+import com.wormhole.eyecare.utils.Constant;
+import com.wormhole.eyecare.utils.DoubleFragmentTransaction;
+import com.wormhole.sdk.components.doubleeyessupport.DoubleEyesActivity;
+import com.wormhole.sdk.components.doubleeyessupport.refeshtask.DoubleEyesRefreshHandler;
+
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
+
+public class MainActivity extends DoubleEyesActivity {
+	
+	private MainFragment mainFragment;
+	
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		getScreenInfo();
+		setContentView(R.layout.activity_main);
+//		DoubleEyesRefreshHandler.REFRESH_TRIGGER = true;
+		
+		setDefaultFragment();
+	}
+
+	private void setDefaultFragment() {
+		FragmentManager fm = getFragmentManager();
+		FragmentTransaction transaction = fm.beginTransaction();
+		mainFragment = new MainFragment();
+		transaction.replace(R.id.fragment_content, mainFragment);
+		transaction.commit();
+//		DoubleEyesRefreshHandler.REFRESH_TRIGGER = true;
+	}
+
+	private void getScreenInfo(){
+		DisplayMetrics dm = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(dm);
+		Constant.SCREENWIDTH = dm.widthPixels;// 获取屏幕分辨率宽度
+		Constant.SCREENHEIGHT = dm.heightPixels;
+	}
+
+	@Override
+	protected void onDestroy() {
+		DoubleEyesRefreshHandler.REFRESH_TRIGGER = false;
+		super.onDestroy();
+	}
+	
+}

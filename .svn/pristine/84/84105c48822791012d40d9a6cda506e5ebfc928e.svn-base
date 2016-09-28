@@ -1,0 +1,12 @@
+#---------------------------wormhole-common---------------------------
+wormhole.basic.doubleeyes.refreshinterval = 100
+#---------------------------wormhole-server---------------------------
+wormhole.glass.server.host = localhost
+wormhole.glass.server.port = 8080
+#---------------------------wormhole-glass---------------------------
+wormhole.glass.main.glassversion = VR
+wormhole.glass.main.systemversion = 0.0.1
+wormhole.glass.main.cameracontrol = EULER
+wormhole.glass.boot.bootanimationon = true
+wormhole.glass.boot.bootframefrequency = 3
+wormhole.glass.boot.bootcompletesleep = 10
