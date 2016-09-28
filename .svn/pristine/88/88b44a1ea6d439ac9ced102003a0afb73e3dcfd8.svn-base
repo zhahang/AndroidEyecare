@@ -1,8 +1,0 @@
-<resources>
-	
-    <declare-styleable name="doubletoast">
-        <attr name="textColor" format="color" />
-        <attr name="text" format="string"/>
-    </declare-styleable>
-    
-</resources>
