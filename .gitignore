@@ -41,5 +41,6 @@ captures/
 *.jks
 
 # My ignore
+*.classpath
 .svn
 src/wormhole.properties
